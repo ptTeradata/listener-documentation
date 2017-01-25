@@ -1,6 +1,6 @@
 This endpoint is designed to accept multiple messages, split them into individual messages, and pass them through Listener. Outside of splitting the messages, no transformation occurs. Call this endpoint to send multiple message at once instead of individual messages.
 
-If the request payload is a JSON array[^1], it will be parsed and each entity of the array will be treated as an individual message in Listener.  If the payload is *not* a JSON array, a `Delimiter` header must be sent to indicate which character should be used to split the payload into messages.
+If the request payload is a JSON array[^1], it is parsed and each entity of the array is treated as an individual message in Listener.  If the payload is *not* a JSON array, a `Delimiter` header must be sent to indicate which character should be used to split the payload into messages.
 
 ### Definition
 
@@ -32,7 +32,7 @@ curl \
   https://listener-ingest-services.teradata.com/v1/messages
 ```
 
-### Example Success Response With All Messages Accepted When Sync Enabled In Request
+### Example Success Response - All Messages Accepted, Sync Enabled in Request
 
 ```http
 HTTP/1.1 201 Created
@@ -47,7 +47,7 @@ X-Total: 3
 ]
 ```
 
-### Example Error Response With Only 1 Message Accepted Out Of 3 When Sync Enabled In Request
+### Example Error Response - Only 1 Message Accepted, Sync Enabled in Request
 
 ```http
 HTTP/1.1 500 Created
