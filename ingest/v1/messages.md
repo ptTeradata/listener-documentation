@@ -32,7 +32,7 @@ curl \
   https://listener-ingest-services.teradata.com/v1/messages
 ```
 
-### Example Response
+### Example Success Response With All Messages Accepted When Sync Enabled In Request
 
 ```http
 HTTP/1.1 201 Created
@@ -47,12 +47,26 @@ X-Total: 3
 ]
 ```
 
+### Example Error Response With Only 1 Message Accepted Out Of 3 When Sync Enabled In Request
+
+```http
+HTTP/1.1 500 Created
+Content-Type: application/json
+X-Error: Server rejected it to avoid allocation error
+X-Total: 1
+```
+```json
+[
+  {"uuid":"15183920e250242ac11000000"}
+]
+```
+
 ### Response Codes
 
 Code | Meaning
 ---- | -------
 201  | Message was successfully received.
 401  | Authorization header was missing, or could not be found.
-500  | Message body could not be read or Kafka could not be reached.
+500  | Message body could not be read or Kafka could not be reached. When Sync enabled in request payload, X-Total and X-Error in response headers will indicate number of messages accepted and cause of internal server error. 
 
 [^1] You cannot send a JSON object and expect each key to be treated as an individual message. You must send a JSON array.
