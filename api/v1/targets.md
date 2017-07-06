@@ -815,7 +815,7 @@ Code | Meaning
 
 #### Reason Values
 
-Code           | Meaning
+Value          | Meaning
 ---------------| --------------
 BAD_RECORD     | Bad record encountered writing data
 USER_REQUESTED | User operation (e.g. Writer stopped by user)
