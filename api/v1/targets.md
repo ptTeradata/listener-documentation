@@ -776,10 +776,21 @@ curl \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer TOKEN" \
   -i \
-  https://listener-app-services.teradata.com/v1/targets/758fbda4-accc-4f90-8f09-cc0a164c8c28/pause
+  https://listener-app-services.teradata.com/v1/targets/758fbda4-accc-4f90-8f09-cc0a164c8c28/status
 ```
 
 #### Example Response
+
+```http
+HTTP/1.1 200 OK
+```
+```json
+{
+  "status": "paused"
+}
+```
+
+#### Example Response with reason
 
 ```http
 HTTP/1.1 200 OK
@@ -791,17 +802,6 @@ HTTP/1.1 200 OK
   "can_start": true,
   "error": "exception message",
   "reason": "BAD_RECORD"
-}
-```
-
-#### Example Response with reason
-
-```http
-HTTP/1.1 200 OK
-```
-```json
-{
-  "status": "paused"
 }
 ```
 
