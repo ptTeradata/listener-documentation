@@ -759,7 +759,9 @@ Code | Meaning
 
 ## Get Target Status
 
-A target's status is the current status of the writer, which can be one of four states: `started`, `starting`, `paused`, or `pausing`. Due to a writer taking some time to deploy, the `starting` and `pausing` statuses indicate the writer is changing state.
+A target's status is the current status of the writer, which can be one of four states: `started`, `starting`, `paused`, or `pausing`. Due to a writer taking some time to deploy, the `starting` and `pausing` statuses indicate the writer is changing state. In the case of a `paused` or `pausing` state the response will contain also a `reason`
+field with a constant value to give more details about what put the writer in pause state. Indeed, a writer could have been paused due to a bad record encountered writing
+a batch of data, due to a user request to stop a writer or update a targer, or some internal error.
 
 #### Definition
 
@@ -784,7 +786,22 @@ HTTP/1.1 200 OK
 ```
 ```json
 {
-  "status": "started"
+  "status": "started",
+  "can_pause": false,
+  "can_start": true,
+  "error": "exception message",
+  "reason": "BAD_RECORD"
+}
+```
+
+#### Example Response with reason
+
+```http
+HTTP/1.1 200 OK
+```
+```json
+{
+  "status": "paused"
 }
 ```
 
@@ -796,7 +813,13 @@ Code | Meaning
 401_STATUS
 404  | 404_STATUS
 
+#### Reason Values
 
+Code           | Meaning
+---------------| --------------
+BAD_RECORD     | Bad record encountered writing data
+USER_REQUESTED | User operation (e.g. Writer stopped by user)
+RUNTIME_ERROR  | Internal error
 
 
 
