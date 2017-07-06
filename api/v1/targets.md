@@ -761,7 +761,7 @@ Code | Meaning
 
 A target's status is the current status of the writer, which can be one of four states: `started`, `starting`, `paused`, or `pausing`. Due to a writer taking some time to deploy, the `starting` and `pausing` statuses indicate the writer is changing state. In the case of a `paused` or `pausing` state the response will contain also a `reason`
 field with a constant value to give more details about what put the writer in pause state. Indeed, a writer could have been paused due to a bad record encountered writing
-a batch of data, due to a user request to stop a writer or update a targer, or some internal error.
+a batch of data, due to a user request to stop a writer or update a target, or some internal error.
 
 #### Definition
 
