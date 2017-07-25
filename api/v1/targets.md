@@ -138,7 +138,7 @@ If a target is configured with `auto_shred` and a user provides the following `J
     "Christian" : 63,
 	"None" : 25,
 	"Muslim" : 9,
-	"Other" : 3,
+	"Other" : 3
   },
   "monarch" : null
 }
@@ -389,7 +389,7 @@ Content-Type: application/json
 Code | Meaning
 ---- | -------
 201  | Targets were returned successfully.
-401_STATUS
+401  | Authorization header was missing or could not be found.
 
 
 
@@ -458,8 +458,8 @@ Content-Type: application/json
 Code | Meaning
 ---- | -------
 201  | Target was returned successfully.
-401_STATUS
-404  | 404_STATUS
+401  | Authorization header was missing or could not be found.
+404  | The resource was not found.
 
 
 
@@ -623,8 +623,8 @@ Code | Meaning
 ---- | -------
 201  | Target was updated successfully.
 400  | A required property is missing from the request.
-401_STATUS
-404  | 404_STATUS
+401  | Authorization header was missing or could not be found.
+404  | The resource was not found.
 
 
 
@@ -664,9 +664,9 @@ HTTP/1.1 204 No Content
 Code | Meaning
 ---- | -------
 204  | Target was deleted successfully.
-401_STATUS
+401  | Authorization header was missing or could not be found.
 403  | Cannot delete a target marked with a production flag.
-404  | 404_STATUS
+404  | The resource was not found.
 
 
 
@@ -707,8 +707,8 @@ Code | Meaning
 ---- | -------
 200  | Target was started successfully.
 400  | Target settings may be invalid, such as incorrect mapping settings or permissions, which prevents the writer from starting.
-401_STATUS
-404  | 404_STATUS
+401  | Authorization header was missing or could not be found.
+404  | The resource was not found.
 
 
 
@@ -748,8 +748,8 @@ HTTP/1.1 200 OK
 Code | Meaning
 ---- | -------
 200  | Target was started successfully.
-401_STATUS
-404  | 404_STATUS
+401  | Authorization header was missing or could not be found.
+404  | The resource was not found.
 
 
 
@@ -810,8 +810,8 @@ HTTP/1.1 200 OK
 Code | Meaning
 ---- | -------
 200  | Status was returned successfully.
-401_STATUS
-404  | 404_STATUS
+401  | Authorization header was missing or could not be found.
+404  | The resource was not found.
 
 #### Reason Values
 
@@ -871,7 +871,7 @@ Code | Meaning
 ---- | -------
 200  | Target details are valid.
 400  | Validation failed due to missing or incorrect details.
-401_STATUS
+401  | Authorization header was missing or could not be found.
 
 ## Retrieve Count of Dead Letter records
 
